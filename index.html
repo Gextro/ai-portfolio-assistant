@@ -72,6 +72,41 @@
   @keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
   footer{text-align:center;color:var(--muted);font-size:.72rem;padding:0 0 16px}
   footer a{color:var(--muted)}
+
+  /* ---- Anime avatar ---- */
+  .avatar{overflow:hidden}
+  .ariaFace{width:100%;height:100%;display:block}
+  .mini-face{width:32px;height:32px;border-radius:50%;flex:0 0 auto;border:2px solid var(--accent);background:#0e1430}
+  /* expression defaults (neutral) */
+  #eyesHappy,#mouthSmile,#mouthTalk,#mouthO{display:none}
+  #mouthNeutral{display:block}
+  .blush{opacity:0;transition:opacity .35s}
+  .look{transition:transform .35s}
+  .brow{transition:transform .3s}
+  #eyesOpen{transition:transform .3s}
+  .lid{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);animation:blink 5.4s infinite}
+  @keyframes blink{0%,93%,100%{transform:scaleY(0)}96.5%{transform:scaleY(1)}}
+  /* happy */
+  .exp-happy #eyesOpen{display:none}
+  .exp-happy #eyesHappy{display:block}
+  .exp-happy #mouthNeutral{display:none}
+  .exp-happy #mouthSmile{display:block}
+  .exp-happy .blush{opacity:.85}
+  /* thinking */
+  .exp-think .look{transform:translate(2px,-3px)}
+  .exp-think .brow{transform:translateY(-3px)}
+  .exp-think .blush{opacity:.3}
+  /* talking */
+  .exp-talk #mouthNeutral{display:none}
+  .exp-talk #mouthTalk{display:block}
+  .talkmouth{transform-box:fill-box;transform-origin:50% 50%;animation:talk .26s infinite}
+  @keyframes talk{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+  .exp-talk .blush{opacity:.4}
+  /* surprised */
+  .exp-surprised #mouthNeutral{display:none}
+  .exp-surprised #mouthO{display:block}
+  .exp-surprised #eyesOpen{transform:scale(1.06)}
+  .exp-surprised .brow{transform:translateY(-4px)}
 </style>
 </head>
 <body>
@@ -83,7 +118,63 @@
   <div class="wrap">
     <div class="chat">
       <div class="hero">
-        <img class="avatar" id="avatar" alt="Aria avatar" />
+        <div class="avatar">
+          <svg class="ariaFace exp-neutral" id="ariaFace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aria, anime AI assistant with white hair and red eyes">
+            <defs>
+              <radialGradient id="bg" cx="50%" cy="32%" r="78%">
+                <stop offset="0%" stop-color="#233567"/><stop offset="100%" stop-color="#0b1130"/>
+              </radialGradient>
+              <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dbe1f4"/>
+              </linearGradient>
+              <radialGradient id="iris" cx="50%" cy="38%" r="62%">
+                <stop offset="0%" stop-color="#ff7a7a"/><stop offset="55%" stop-color="#e01f1f"/><stop offset="100%" stop-color="#8f0000"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+            <path d="M28 122 Q20 60 60 38 Q100 18 140 38 Q180 60 172 122 Q176 162 158 188 L150 150 Q150 120 140 110 L60 110 Q50 120 50 150 L42 188 Q24 162 28 122Z" fill="url(#hair)"/>
+            <ellipse cx="100" cy="108" rx="50" ry="54" fill="#ffe6d5"/>
+            <ellipse cx="52" cy="112" rx="7" ry="10" fill="#ffdcc7"/>
+            <ellipse cx="148" cy="112" rx="7" ry="10" fill="#ffdcc7"/>
+            <ellipse class="blush" cx="72" cy="132" rx="9" ry="5.5" fill="#ff9bb0"/>
+            <ellipse class="blush" cx="128" cy="132" rx="9" ry="5.5" fill="#ff9bb0"/>
+            <path d="M50 66 Q100 40 150 66 L150 96 Q138 112 126 94 Q118 110 106 94 Q100 110 94 94 Q82 110 74 94 Q62 112 50 96 Z" fill="url(#hair)"/>
+            <path d="M100 44 q14 -16 22 -2 q-8 -4 -16 6" fill="url(#hair)"/>
+            <path d="M50 80 Q34 130 44 178 Q54 148 62 116 Z" fill="url(#hair)"/>
+            <path d="M150 80 Q166 130 156 178 Q146 148 138 116 Z" fill="url(#hair)"/>
+            <path class="brow" d="M66 94 Q80 89 92 94" stroke="#c9ccdb" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path class="brow" d="M108 94 Q120 89 134 94" stroke="#c9ccdb" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <g id="eyesOpen">
+              <ellipse cx="80" cy="116" rx="13" ry="16" fill="#fff"/>
+              <g class="look">
+                <circle cx="80" cy="117" r="10" fill="url(#iris)"/>
+                <circle cx="80" cy="117" r="4.5" fill="#360000"/>
+                <circle cx="76" cy="112" r="3.4" fill="#fff"/>
+                <circle cx="84" cy="121" r="1.7" fill="#fff" opacity=".85"/>
+              </g>
+              <path d="M67 109 Q80 101 93 109" stroke="#2a1222" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+              <ellipse class="lid" cx="80" cy="115" rx="14" ry="17" fill="#ffe6d5"/>
+              <ellipse cx="120" cy="116" rx="13" ry="16" fill="#fff"/>
+              <g class="look">
+                <circle cx="120" cy="117" r="10" fill="url(#iris)"/>
+                <circle cx="120" cy="117" r="4.5" fill="#360000"/>
+                <circle cx="116" cy="112" r="3.4" fill="#fff"/>
+                <circle cx="124" cy="121" r="1.7" fill="#fff" opacity=".85"/>
+              </g>
+              <path d="M107 109 Q120 101 133 109" stroke="#2a1222" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+              <ellipse class="lid" cx="120" cy="115" rx="14" ry="17" fill="#ffe6d5"/>
+            </g>
+            <g id="eyesHappy">
+              <path d="M67 118 Q80 104 93 118" stroke="#b3122a" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M107 118 Q120 104 133 118" stroke="#b3122a" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+            <path d="M99 132 q1 4 2 5" stroke="#e9b79c" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path id="mouthNeutral" d="M90 150 Q100 157 110 150" stroke="#c0506a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path id="mouthSmile" d="M84 148 Q100 166 116 148 Q100 156 84 148 Z" fill="#9c2440"/>
+            <ellipse id="mouthTalk" class="talkmouth" cx="100" cy="152" rx="8" ry="6.5" fill="#9c2440"/>
+            <ellipse id="mouthO" cx="100" cy="153" rx="6" ry="8" fill="#9c2440"/>
+          </svg>
+        </div>
         <div>
           <div class="name">Aria <span class="status-dot"></span></div>
           <div class="role">AI Portfolio Assistant · online</div>
@@ -103,14 +194,27 @@
   </div>
 
   <footer>
-    Avatar by <a href="https://www.dicebear.com" target="_blank" rel="noopener">DiceBear</a> (Lorelei, CC BY 4.0) ·
+    Original animated anime avatar hand-built in SVG ·
     Built by <a href="https://github.com/Gextro" target="_blank" rel="noopener">Gextro</a>
   </footer>
 
 <script>
-  // ---- Avatars (license-free, generated) ----
-  const ARIA_AVATAR = "https://api.dicebear.com/9.x/lorelei/svg?seed=Aria&backgroundColor=b6e3f4,c0aede,ffd5dc";
-  document.getElementById('avatar').src = ARIA_AVATAR;
+  // ---- Expressive anime avatar ----
+  const face = document.getElementById('ariaFace');
+  let _expTimer = null;
+  function setExpression(name){
+    if(face) face.setAttribute('class', 'ariaFace exp-' + name);
+  }
+  // Compact matching mini-face for chat bubbles
+  const MINI_SVG = `<svg class="mini-face" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Aria">
+    <circle cx="100" cy="100" r="100" fill="#141a33"/>
+    <path d="M30 122 Q22 60 62 40 Q100 20 138 40 Q178 60 170 122 L156 150 Q150 118 140 110 L60 110 Q50 118 44 150 Z" fill="#e9ecf7"/>
+    <ellipse cx="100" cy="108" rx="50" ry="54" fill="#ffe6d5"/>
+    <path d="M50 66 Q100 40 150 66 L150 96 Q138 112 126 94 Q118 110 106 94 Q100 110 94 94 Q82 110 74 94 Q62 112 50 96 Z" fill="#eef1fb"/>
+    <path d="M68 116 Q80 104 92 116" stroke="#b3122a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M108 116 Q120 104 132 116" stroke="#b3122a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M90 148 Q100 156 110 148" stroke="#c0506a" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </svg>`;
 
   // ---- Knowledge base about Gourav ----
   const KB = {
@@ -162,15 +266,14 @@
 
   // ---- UI ----
   const messagesEl = document.getElementById('messages');
-  const MINI = "https://api.dicebear.com/9.x/lorelei/svg?seed=Aria&backgroundColor=c0aede";
 
   function bubble(text, who){
     const row = document.createElement('div');
     row.className = 'row ' + who;
     if(who === 'bot'){
-      const img = document.createElement('img');
-      img.className = 'mini'; img.src = MINI; img.alt = 'Aria';
-      row.appendChild(img);
+      const holder = document.createElement('div');
+      holder.innerHTML = MINI_SVG;
+      row.appendChild(holder.firstElementChild);
     }
     const b = document.createElement('div');
     b.className = 'bubble';
@@ -189,7 +292,7 @@
   function typing(){
     const row = document.createElement('div');
     row.className = 'row bot';
-    row.innerHTML = `<img class="mini" src="${MINI}" alt="Aria"/><div class="bubble typing"><span></span><span></span><span></span></div>`;
+    row.innerHTML = `${MINI_SVG}<div class="bubble typing"><span></span><span></span><span></span></div>`;
     messagesEl.appendChild(row);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     return row;
@@ -197,8 +300,22 @@
 
   function respond(text){
     const t = typing();
+    setExpression('think');
     const reply = answer(text);
-    setTimeout(()=>{ t.remove(); bubble(reply, 'bot'); }, 550 + Math.random()*400);
+    setTimeout(()=>{
+      t.remove();
+      bubble(reply, 'bot');
+      setExpression('talk');
+      const dur = Math.min(4200, 900 + reply.length * 18);
+      clearTimeout(_expTimer);
+      setTimeout(()=> setExpression('happy'), dur);
+      _expTimer = setTimeout(()=> setExpression('neutral'), dur + 1400);
+    }, 620 + Math.random()*420);
+  }
+
+  function reactThenRespond(text){
+    setExpression('surprised');
+    setTimeout(()=> respond(text), 260);
   }
 
   function handleSend(){
@@ -207,10 +324,10 @@
     if(!text) return;
     bubble(text, 'user');
     input.value = '';
-    respond(text);
+    reactThenRespond(text);
   }
 
-  function ask(text){ bubble(text,'user'); respond(text); }
+  function ask(text){ bubble(text,'user'); reactThenRespond(text); }
 
   // Quick-reply chips
   const CHIPS = [
@@ -232,7 +349,11 @@
   });
 
   // Greeting
-  setTimeout(()=> bubble(KB.intro, 'bot'), 300);
+  setTimeout(()=>{
+    bubble(KB.intro, 'bot');
+    setExpression('happy');
+    setTimeout(()=> setExpression('neutral'), 2600);
+  }, 300);
 </script>
 </body>
 </html>
