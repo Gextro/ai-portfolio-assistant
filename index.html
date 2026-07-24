@@ -218,50 +218,118 @@
 
   // ---- Knowledge base about Gourav ----
   const KB = {
-    intro: "Hi! I'm Aria 🌸 — Gourav's AI assistant. I can tell you about his skills, his four live-deployed projects, his experience, or how to reach him. What would you like to know?",
-    skills: "Gourav's core stack:\n• Languages: Python, TypeScript, JavaScript\n• Backend & AI: FastAPI, Node.js, Express, scikit-learn, WebSockets\n• Frontend: React, Tailwind CSS, HTML/CSS\n• Tooling & DevOps: Docker, Git, Render\nHe pairs these with testing, monitoring, and clean architecture.",
-    experience: "Gourav is a Software & AI Engineer. He worked as a Frontend Developer Intern at Solyn Software (HTML, CSS, performance optimization), and has since built and deployed four full backend/AI systems end-to-end.",
-    education: "Gourav is focused on practical, production-grade engineering — currently deepening system design and distributed systems while shipping real projects.",
-    contact: "You can reach Gourav at 📧 gorav76600@gmail.com or on GitHub: https://github.com/Gextro",
-    why: "Why hire Gourav? He doesn't just write code — he ships. Every one of his four projects is live, Dockerized, unit-tested, and monitored. He builds AI (RAG, LLM assistants), real-time systems (WebSockets), and ML serving with production concerns baked in. That end-to-end ownership is exactly what strong SDE/AI teams need.",
-    projects: "Gourav has 4 live, deployed projects:\n\n1. 🤖 AI RAG Assistant — chat with your documents (cited answers)\n2. 💬 Real-Time Chat + AI — WebSocket chat with an @ai assistant\n3. 🔗 URL Shortener — base62 links, rate limiting, analytics\n4. 📊 ML Serving API — model serving with drift monitoring\n\nAsk me about any one of them for details!",
+    intro: [
+      "Hi! I'm Aria 🌸 — Gourav's AI assistant. Ask me anything: his skills, how he works, his experience, his projects, or how to reach him.",
+      "Hey there! I'm Aria 💫 Gourav's personal AI guide. Curious about his engineering style, his stack, or his work? Just ask!"
+    ],
+    about_aria: "I'm Aria — a little AI persona Gourav built to represent him. I run entirely in your browser (no server), matching your questions to what I know about him. Think of me as his interactive portfolio 🌸",
+    hello: [
+      "Hello! 👋 What would you like to know about Gourav — his skills, experience, or the way he builds things?",
+      "Hey! 😊 Ask me about Gourav's engineering, his stack, or his journey.",
+      "Hi there! I'm all ears — what can I tell you about Gourav?"
+    ],
+    thanks: [
+      "You're very welcome! 💜 Anything else you're curious about?",
+      "Anytime! 🌟 Happy to share more whenever you like.",
+      "Glad I could help! 😊 Ask away if something else comes to mind."
+    ],
+    about_him: "Gourav Goyal is a Software & AI Engineer who loves turning ideas into things people can actually use. He's pragmatic, detail-oriented, and obsessed with shipping — he'd rather have something live and improving than perfect on paper. He works across the stack, but his heart is in backend systems and applied AI.",
+    personality: "Gourav is curious, calm under pressure, and genuinely enjoys hard problems. He communicates clearly, asks good questions, and takes ownership from idea to deployment. People who work with him notice he's reliable and low-ego — he cares more about the outcome than being right.",
+    skills: "Gourav's toolkit spans the whole stack:\n• Languages — Python, TypeScript, JavaScript, SQL\n• Backend & AI — FastAPI, Node.js, Express, scikit-learn, WebSockets, REST\n• Frontend — React, Tailwind, HTML/CSS\n• Data & ML — pandas, NumPy, model training, drift monitoring\n• DevOps — Docker, Git, CI, cloud deployment\nAnd he pairs all of it with testing, monitoring, and clean architecture.",
+    languages: "Gourav's strongest languages are Python (AI/ML & backend) and TypeScript/JavaScript (backend & frontend). He also writes SQL for data work and picks up new languages quickly when a project calls for it.",
+    frontend: "On the frontend, Gourav works with React, Tailwind CSS, and vanilla HTML/CSS/JS. His internship was frontend-focused, so he cares about performance, responsive layouts, and clean, accessible UI — the kind of polish you can see in this very chat.",
+    backend: "Backend is Gourav's home turf. He builds APIs with FastAPI (Python) and Express/Node (TypeScript), designs clean REST endpoints, handles rate limiting, auth patterns, WebSockets for real-time, and persistence — always with tests and clear error handling.",
+    ai: "On the AI/ML side, Gourav builds Retrieval-Augmented Generation (RAG) systems, integrates LLMs in a provider-flexible way, and trains classic ML models with scikit-learn. He's just as comfortable with the practical MLOps side — serving models, monitoring drift, and measuring latency.",
+    devops: "For DevOps, Gourav containerizes apps with Docker, manages code with Git, and deploys to the cloud with health checks and monitoring. He designs for the realities of production — cold starts, ephemeral storage, and graceful failure.",
+    testing: "Gourav treats testing as part of building, not an afterthought. He writes unit and integration tests (Jest for TypeScript, pytest for Python), adds health endpoints, and instruments his services with metrics so he knows they actually work in production.",
+    approach: "Gourav's approach: understand the problem first, ship a working slice fast, then harden it. He values clean architecture, small reviewable changes, tests, and observability — he'd rather deploy early and iterate with real feedback than polish in isolation.",
+    problem_solving: "When Gourav hits a hard problem, he breaks it down, reproduces it reliably, and reasons from first principles rather than guessing. He's comfortable reading docs, digging into internals, and choosing the simplest solution that holds up under load.",
+    teamwork: "Gourav is an easy person to build with — clear communication, thoughtful code reviews, and reliable follow-through. He documents his work, explains trade-offs, and is happy to both mentor and learn from teammates.",
+    learning: "Gourav is a relentless learner. Lately he's been deep in system design, distributed systems, and tools like Next.js. He learns by building — every new concept usually turns into a small shipped project.",
+    experience: "Gourav is a Software & AI Engineer. He started as a Frontend Developer Intern at Solyn Software (HTML, CSS, performance optimization), then expanded into full-stack and AI engineering — designing, building, and deploying complete backend and AI systems end-to-end.",
+    education: "Gourav focuses on practical, production-grade engineering. Alongside his studies he continuously sharpens system design and distributed systems knowledge — and proves it by shipping real, deployed software.",
+    goals: "Gourav wants to work on impactful, technically challenging products — ideally in AI/ML or backend-heavy systems — where he can own features end-to-end and keep growing toward senior engineering and system design.",
+    availability: "Gourav is open to Software Engineer / AI Engineer opportunities. The fastest way to start a conversation is email — 📧 gorav76600@gmail.com — or reach out on GitHub: https://github.com/Gextro",
+    location: "Gourav is open to remote work and can collaborate across time zones. For specifics on location or relocation, the best bet is to email him directly at 📧 gorav76600@gmail.com.",
+    why: [
+      "Why hire Gourav? He ships. Everything he builds ends up live, tested, and monitored — not stuck as a demo. He owns problems end-to-end, writes clean code, and thinks about production from day one. That mix of range and reliability is hard to find.",
+      "Hiring Gourav gets you someone who bridges AI, backend, and frontend, communicates clearly, and takes real ownership. He turns ambiguous ideas into deployed, maintainable systems — and keeps leveling up while doing it."
+    ],
+    strengths: "Gourav's biggest strengths: end-to-end ownership, breadth across AI/backend/frontend, a bias for shipping, and disciplined engineering habits (tests, monitoring, clean code). He's reliable, curious, and calm when things break.",
+    contact: "You can reach Gourav at 📧 gorav76600@gmail.com or on GitHub: https://github.com/Gextro — he's quick to respond and happy to chat.",
+    resume: "For Gourav's full résumé/CV, email him at 📧 gorav76600@gmail.com and he'll share it. You can also see his work in action on GitHub: https://github.com/Gextro",
+    links: "Here's where to find Gourav:\n• GitHub — https://github.com/Gextro\n• Email — gorav76600@gmail.com\nAll his projects are live and linked from his profile.",
+    projects: "Gourav has built and deployed several full systems. A few highlights:\n\n1. 🤖 AI RAG Assistant — chat with your documents, with cited answers\n2. 💬 Real-Time Chat + AI — WebSocket chat with an @ai assistant\n3. 🔗 URL Shortener — base62 links, rate limiting, analytics\n4. 📊 ML Serving API — model serving with drift monitoring\n\nWant details on any of them? Just name it — or ask about his skills, experience, or how he works.",
+    proud: "One thing Gourav is proud of: his AI RAG Assistant. Getting document-grounded, cited answers working reliably — with persistence and a provider-flexible LLM — pulled together his AI, backend, and product instincts in one project.",
     rag: "🤖 AI RAG Assistant — a Retrieval-Augmented Generation app: upload documents, then ask questions and get answers grounded in and cited from those documents. Built with Python, FastAPI, and scikit-learn; features deterministic local retrieval, a persistent knowledge base, and a provider-flexible LLM.\nLive: https://ai-rag-assistant-3gsl.onrender.com\nCode: https://github.com/Gextro/ai-rag-assistant",
     chat: "💬 Real-Time Chat + AI — a WebSocket chat with rooms, live presence, and message history, plus an in-chat AI assistant you summon with @ai. Built in TypeScript on Node.js with the ws library.\nLive: https://realtime-chat-rdcf.onrender.com\nCode: https://github.com/Gextro/realtime-chat",
     url: "🔗 URL Shortener — turns long links into base62 short codes with rate limiting, click analytics, and idempotent creation. Built in TypeScript with Express and fully tested with Jest.\nLive: https://url-shortener-85o7.onrender.com\nCode: https://github.com/Gextro/url-shortener",
     ml: "📊 ML Serving API — serves a trained RandomForest model with train/predict/retrain endpoints and live metrics including p95 latency and prediction drift monitoring. Built with Python, FastAPI, and scikit-learn.\nLive: https://ml-serving-api.onrender.com\nCode: https://github.com/Gextro/ml-serving-api",
-    hobby: "Beyond shipping code, Gourav is always learning — system design, distributed systems, and new tools like Next.js. He enjoys turning rough ideas into polished, deployed products.",
-    thanks: "You're very welcome! 💜 Anything else you'd like to know about Gourav?",
-    hello: "Hello! 👋 I'm Aria. Ask me about Gourav's skills, projects, experience, or how to contact him.",
-    fallback: "I'm not totally sure about that one 🤔 — but I can tell you about Gourav's skills, his 4 projects (RAG, real-time chat, URL shortener, ML serving), his experience, or his contact info. Try one of the chips below!"
+    favorite_tech: "Gourav's favorite tools right now are FastAPI for clean Python APIs, TypeScript for safer JavaScript, and anything in the applied-AI space — especially RAG and LLM integration. He also enjoys the polish of a good React + Tailwind frontend.",
+    hobby: "Outside of shipping code, Gourav is usually… still building 😄 — exploring system design, distributed systems, and new tools like Next.js. He likes turning rough ideas into polished, deployed products and learning something new each time.",
+    fun_fact: "Fun fact: Gourav built me — this whole anime AI assistant — by hand in a single HTML file, avatar and all, just to make his portfolio more fun. He likes putting personality into engineering. 🌸",
+    fallback: [
+      "Hmm, I'm not sure I caught that one 🤔 — but I know plenty about Gourav! Try asking about his skills, how he works, his experience, his AI/ML work, or how to reach him.",
+      "I might not have an answer for that exactly 😊 — but ask me about Gourav's background, his engineering style, his tech stack, or his projects and I'll happily dive in.",
+      "Not sure about that one! You could ask me things like 'What's his experience?', 'How does he approach problems?', 'What's he best at?', or 'How can I contact him?'"
+    ]
   };
 
-  // ---- Intent matching (keyword scoring) ----
+  // ---- Intent matching (weighted keyword scoring) ----
   const INTENTS = [
-    { key:'hello',      words:['hi','hello','hey','yo','hola','sup','greetings'] },
-    { key:'thanks',     words:['thanks','thank you','thx','appreciate','cool','awesome','nice'] },
-    { key:'skills',     words:['skill','stack','tech','technolog','language','know','tools','framework','expertise','good at'] },
-    { key:'experience', words:['experience','work','intern','job','company','solyn','career','background'] },
-    { key:'education',  words:['education','study','degree','college','university','school','learn'] },
-    { key:'contact',    words:['contact','email','reach','hire me','connect','linkedin','mail','get in touch'] },
-    { key:'why',        words:['why','hire','recruit','strength','stand out','best','fit','choose'] },
-    { key:'rag',        words:['rag','retrieval','document','doc','pdf','knowledge','chat with','ai assistant project'] },
-    { key:'chat',       words:['realtime','real-time','websocket','chat','presence','room','socket'] },
-    { key:'url',        words:['url','shorten','link','base62','redirect','short'] },
-    { key:'ml',         words:['ml','model','serving','random forest','drift','predict','machine learning','iris','metric'] },
-    { key:'projects',   words:['project','portfolio','built','build','app','made','work on','showcase'] },
-    { key:'hobby',      words:['hobby','fun','interest','free time','passion','outside'] },
+    { key:'about_aria',      words:['who are you','what are you','your name','about you','are you real','real person','are you ai','are you human','you human'] },
+    { key:'about_him',       words:['who is gourav','about gourav','tell me about him','tell me about','introduce','who is he','describe him'] },
+    { key:'personality',     words:['personality','character','kind of person','attitude','low ego','what is he like','like as a person','soft skill'] },
+    { key:'hello',           words:['hello','hey','hi ','yo ','hola','sup','greetings','good morning','good evening','howdy'] },
+    { key:'thanks',          words:['thanks','thank you','thx','appreciate','awesome','nice','great job','helpful'] },
+    { key:'frontend',        words:['frontend','front-end','front end','react','tailwind','css','html','responsive','ui design','user interface'] },
+    { key:'backend',         words:['backend','back-end','back end','fastapi','express','node','rest api','endpoint','server side','database'] },
+    { key:'ai',              words:['machine learning','artificial intelligence','ai ','llm','embedding','gpt','neural','ai and','ai skill','deep learning'] },
+    { key:'devops',          words:['devops','docker','deploy','cloud','render','container','ci cd','infrastructure','pipeline'] },
+    { key:'testing',         words:['testing','unit test','jest','pytest','coverage','quality assurance','qa '] },
+    { key:'languages',       words:['language','languages','python','typescript','javascript','sql'] },
+    { key:'skills',          words:['skill','skills','stack','tech stack','technolog','tools','framework','expertise','good with','capabilit'] },
+    { key:'approach',        words:['approach','philosophy','how he work','process','methodology','workflow','build things','shipping'] },
+    { key:'problem_solving', words:['problem solving','debug','troubleshoot','gets stuck','solve problem','think through','hard problem','hard bug','handle bug','bug'] },
+    { key:'teamwork',        words:['teamwork','team player','in a team','collaborat','communicat','code review','mentor','pair program','coworker','work with others','team'] },
+    { key:'learning',        words:['learning','keep learning','grow','growth','self taught','always learning','upskill'] },
+    { key:'experience',      words:['experience','work history','intern','internship','job','company','solyn','career','background'] },
+    { key:'education',       words:['education','degree','college','university','school','qualification','studied'] },
+    { key:'goals',           words:['goal','goals','aspiration','future plan','ambition','dream job','career goal','looking for','next step'] },
+    { key:'availability',    words:['available','availability','open to work','hiring','hire him','recruit','join your','freelance','opportunit'] },
+    { key:'location',        words:['location','where is he','based in','remote','relocat','timezone','onsite','which city','which country'] },
+    { key:'why',             words:['why hire','why should','stand out','reason to hire','best fit','why choose','worth hiring'] },
+    { key:'strengths',       words:['strength','strengths','best at','superpower','what is he good','excel at','edge','strong suit'] },
+    { key:'contact',         words:['contact','email','reach him','connect','get in touch','message him','how to reach'] },
+    { key:'resume',          words:['resume','cv ','curriculum vitae'] },
+    { key:'links',           words:['github link','profile link','social','your links','find him online'] },
+    { key:'proud',           words:['proud','best project','favorite project','biggest achievement','accomplish','most proud'] },
+    { key:'favorite_tech',   words:['favorite tech','favourite','prefer using','love using','enjoy most','favorite tool'] },
+    { key:'rag',             words:['rag assistant','retrieval','rag ','document','pdf','knowledge base','grounded answer','cited'] },
+    { key:'chat',            words:['real-time chat','realtime','real time','websocket','chat app','live presence','chat project'] },
+    { key:'url',             words:['url shortener','shorten','shortener','base62','redirect','short link','short code'] },
+    { key:'ml',              words:['ml serving','serving api','model serving','random forest','drift','inference','retrain'] },
+    { key:'projects',        words:['project','projects','built','portfolio','apps he','showcase','things he built','what has he made'] },
+    { key:'hobby',           words:['hobby','hobbies','free time','for fun','interest','passion','outside work','spare time'] },
+    { key:'fun_fact',        words:['fun fact','interesting fact','surprise me','random fact','tell me something','something cool'] },
   ];
 
+  function pick(v){ return Array.isArray(v) ? v[Math.floor(Math.random() * v.length)] : v; }
+
   function answer(text){
-    const q = ' ' + text.toLowerCase().trim() + ' ';
+    const q = ' ' + text.toLowerCase().replace(/[^a-z0-9@#+\s-]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
     let best = null, bestScore = 0;
     for(const intent of INTENTS){
       let score = 0;
-      for(const w of intent.words){ if(q.includes(w)) score += w.length > 4 ? 2 : 1; }
+      for(const w of intent.words){
+        if(q.includes(w)){
+          score += w.includes(' ') ? 3 : (w.length > 5 ? 3 : (w.length > 3 ? 2 : 1));
+        }
+      }
       if(score > bestScore){ bestScore = score; best = intent.key; }
     }
-    if(!best || bestScore === 0) return KB.fallback;
-    return KB[best] || KB.fallback;
+    if(!best || bestScore === 0) return pick(KB.fallback);
+    return pick(KB[best]) || pick(KB.fallback);
   }
 
   // ---- UI ----
@@ -332,11 +400,11 @@
   // Quick-reply chips
   const CHIPS = [
     ['🧠 Skills','What are his skills?'],
+    ['�️ How he works','How does he approach building?'],
+    ['🤖 AI & ML','His AI and machine learning skills'],
     ['🚀 Projects','Tell me about his projects'],
     ['💼 Experience','What is his experience?'],
-    ['🤖 RAG project','Explain the RAG assistant'],
-    ['💬 Chat project','Explain the real-time chat'],
-    ['📊 ML project','Explain the ML serving API'],
+    ['🎯 Strengths','What is he best at?'],
     ['⭐ Why hire him?','Why should I hire him?'],
     ['📧 Contact','How can I contact him?'],
   ];
@@ -350,7 +418,7 @@
 
   // Greeting
   setTimeout(()=>{
-    bubble(KB.intro, 'bot');
+    bubble(pick(KB.intro), 'bot');
     setExpression('happy');
     setTimeout(()=> setExpression('neutral'), 2600);
   }, 300);
